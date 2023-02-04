@@ -10,8 +10,8 @@ function Login() {
             <br />
             <h2>Login</h2>
             <center>
-              <div className="row"><div className="column"><input placeholder="Username" type="text"/></div> < div className="column"><input placeholder="email" type="email" /></div></div>  
-                <input placeholder="Password" type="password"/>
+            <input placeholder="Username" />
+<input placeholder="Password" type="password" />
 
                 <button >Submit</button>
             </center>

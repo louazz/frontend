@@ -11,8 +11,9 @@ return (
 <br />
 <h2>Sign Up</h2>
 <center>
-<input placeholder="Username" />
-<input placeholder="Password" type="password" />
+
+<div className="row"><div className="column"><input placeholder="Username" type="text"/></div> < div className="column"><input placeholder="email" type="email" /></div></div>  
+                <input placeholder="Password" type="password"/>
 
 <button >Submit</button>
 </center>
