@@ -27,16 +27,17 @@ setRes(data)
     return (
         <div>
             <blockquote>
-                <p><em>Decrypt and edit documents </em></p>
+                <p><em>edit, view and create LaTex documents online </em></p>
             </blockquote>
             <img src={image} />
             <br />
+
             <h2>documents</h2>
             <center>
-                <div className="row"><div className="column">
-                    <input placeholder="Search for document..." onChange={handleChange}  />
+                <div className="row"><div className="column column-60">
+                    <input className="float-right" placeholder="Search for document..." onChange={handleChange}  />
                 </div>
-                    <div className="column"><button className="float-left">search</button></div>
+                    <div className="column"><button className="button  float-left">New Document +</button></div>
                 </div>
 
                 <br />

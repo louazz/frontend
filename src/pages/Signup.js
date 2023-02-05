@@ -4,7 +4,7 @@ function Signup (){
 return (
     <div>
     <blockquote>
-    <p><em>This application enables the uer to edit and generate LaTex documents online</em> sign up now and enjoy the features</p>
+    <p><em>This application enables the user to edit and generate LaTex documents online</em> sign up now and enjoy the features</p>
   </blockquote>
 <img src={image} height=""/>
 <br />

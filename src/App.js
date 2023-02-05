@@ -1,5 +1,5 @@
 import Nav from "./components/Nav";
-import Doc from "./pages/Doc";
+import Document from "./pages/Document";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Search from "./pages/Search";
@@ -11,10 +11,10 @@ function App() {
     <Routes>
       <Route path="/" element={ <Nav />}>
         <Route path="signup" element={<Signup/>}/>
-        <Route path="login" element={<Login/>}/>
+        <Route index element={<Login/>}/>
         <Route path="search" element={<Search/>}/>
-        <Route path="document/:id" element={<Doc/>}/>
-        <Route path="*" element={<Login/>}/>
+        <Route path="document/:id" element={<Document/>}/>
+        
       </Route>
     </Routes>
     </BrowserRouter>
