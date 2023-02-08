@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { render } from "react-dom";
 import AceEditor from "react-ace";
 import "../App.css"
@@ -8,16 +8,26 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import Doc from "../components/Doc.tsx"
 import Sample from "../assets/sample.pdf"
 import { useNavigate, useParams } from "react-router";
+import axios from "axios";
 function Document() {
+    const [content , setContent]= useState();
+
     const navigate= useNavigate()
-    let id= useParams;
+    let api= "http://localhost:8080"
+    let {id}= useParams();
     useEffect(()=>{
         if (localStorage.getItem("token")==undefined){
 navigate("/")
+        }else{
+            axios.get(api+"/api/doc/"+id,{
+                headers: {
+                    "Authorization": `Token ${localStorage.getItem('token')}`
+                }
+            }).then(res=>{if(res.status== 200){setContent(res.data["document"]["content"])}else{}})
         }
     })
     function onChange(newValue) {
-        console.log("change", newValue);
+        setContent(newValue)
     }
     
     return (
@@ -32,7 +42,7 @@ navigate("/")
 <button className="button button-black button-outline">PDF</button>
  
                             </div>
-                            <div className="column"><p>docuemnt id: 165d5f5fge56</p></div>
+                            <div className="column"><p>docuemnt id: {id}</p></div>
                             <div className="column">
                             
                                 <button className="button button-black button-outline float-right ">docx</button>
@@ -47,6 +57,7 @@ navigate("/")
                             editorProps={{ $blockScrolling: true }}
                             height= "1010px"
                             width="100%"
+                            value={content}
                         />
                     </div>
                     <div className="column">

@@ -82,7 +82,11 @@ function Search() {
         if (title != "") {
             axios.post(api + '/api/doc', {
                 title: title,
-                content: ''
+                content: `\n\\documentclass[a4paper,
+                    10pt]{letter}\n\\usepackage{lipsum}\n\n\\name{Nobody}\n\n\n\\signature{Nobody}\n\n\\address\n{\n Fox Books,\\\\\n Times
+                    Square, London.\n}\n\n\n\\begin{document}\n\n\n\\begin{letter}\n{\n Louai Zaiter,\\\\\n International Student
+                    House,\\\\\n London, UK.\n}\n\n\n\\opening{Dear Louai,}\n\n\n\\lipsum[1-40]\n\n\\closing{Yours
+                    truly,}\n\n\\end{letter}\n\\end{document}`
             }, {
                 headers: {
                     "Authorization": `Token ${localStorage.getItem("token")}`
