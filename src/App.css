@@ -2,3 +2,22 @@ body {
   font-family: 'Roboto Mono', monospace;
 
 }
+.AceEditor{ 
+  position: absolute;
+  top: 0;
+  right: 40%;
+  bottom: 20%;
+  left: 0;
+}
+.button-black {
+  background-color: rgb(36, 32, 32);
+  border-color:  rgb(36, 32, 32);
+}
+.button-black.button-clear,
+.button-black.button-outline {
+  background-color: transparent;
+  color:  rgb(36, 32, 32);
+}
+.button-black.button-clear {
+  border-color: transparent;
+}

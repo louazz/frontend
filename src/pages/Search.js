@@ -40,10 +40,34 @@ function Search() {
             }
         }
     })
+
     //handle delete
+    const handleDelete = (id) => {
+        axios.delete(api + "/api/doc/" + id, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("token")}`
+            }
+        }).then(
+            res => {
+                if (res.status == 200) {
+                    // alert("document deleted")
+                    setChecker(false)
+                } else if (res.status == 400) { localStorage.clear() }
+                else {
+                    alert("internal server error")
+                }
+            }
+        )
+    }
     // view doc
-//edit document
-//new document
+    const handleView = (id) => {
+        navigate("/view/" + id)
+    }
+    const handleEdit = (id) => {
+        navigate("/document/" + id)
+    }
+
+    //new document
     const handleChange = (e) => {
 
         if (e.target.value == "") {
@@ -53,9 +77,20 @@ function Search() {
         }
 
     }
-    const match = (input) => {
-        data.filter(item => item.title.includes(input))
+    const handleNew = () => {
+        var title = window.prompt("insert a title");
+        if (title != "") {
+            axios.post(api + '/api/doc', {
+                title: title,
+                content: ''
+            }, {
+                headers: {
+                    "Authorization": `Token ${localStorage.getItem("token")}`
+                }
+            }).then(res => { if (res.status == 200) { navigate("/document/" + res.data['doc']['ID']) } else { alert("an error has occured") } })
+        }
     }
+
     return (
         <div className="container">
             <blockquote>
@@ -69,7 +104,7 @@ function Search() {
                 <div className="row"><div className="column column-60">
                     <input className="float-right" placeholder="Search for document..." onChange={handleChange} />
                 </div>
-                    <div className="column"><button className="button  float-left">New Document +</button></div>
+                    <div className="column"><button className="button  float-left" onClick={handleNew}>New Document +</button></div>
                 </div>
 
                 <br />
@@ -101,13 +136,13 @@ function Search() {
                                     {item.title}
                                 </td>
                                 <td>
-                                    <a>Click</a>
+                                    <a onClick={() => handleView(item.ID)}>Click</a>
                                 </td>
                                 <td>
-                                    <a>Click</a>
+                                    <a onClick={() => handleEdit(item.ID)}>Click</a>
                                 </td>
                                 <td>
-                                    <a>Click</a>
+                                    <a onClick={() => handleDelete(item.ID)}>Click</a>
                                 </td>
                             </tr>
                         ))}
