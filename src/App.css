@@ -21,3 +21,11 @@ body {
 .button-black.button-clear {
   border-color: transparent;
 }
+.file-label {
+  width: 15rem;
+}
+input[type=file].hidden {
+  visibility: hidden;
+  width: 15rem;
+  margin-left: -15rem;
+}

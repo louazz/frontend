@@ -11,7 +11,8 @@ import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import FileSaver from "file-saver";
 function Document() {
-    const [fileUrl, setFileUrl] = useState(Sample);
+    const [file, setFile] = useState();
+    const [fileUrl, setFileUrl] = useState(null);
     const [content, setContent] = useState();
     const [checker, setChecker] = useState(false);
     const [seed, setSeed] = useState(1)
@@ -32,8 +33,8 @@ function Document() {
                 }).then(res => {
                     if (res.status == 200) {
                         console.log(res.data["document"]["content"])
-                        setContent(res.data["document"]["content"]); setTitle(res.data["document"]["title"]); 
-                        setChecker(true);
+                        setContent(res.data["document"]["content"]); setTitle(res.data["document"]["title"]);
+
                         let formData = new FormData()
                         formData.append('file', content)
                         axios.post(api_comp + "/compile/pdf/" + id, formData, {
@@ -46,6 +47,7 @@ function Document() {
                             var fileUrl = URL.createObjectURL(file);
                             setFileUrl(fileUrl)
                             setSeed(Math.random())
+                            setChecker(true);
 
                         })
                     } else { alert("server error") }
@@ -56,6 +58,31 @@ function Document() {
     })
     function onChange(newValue) {
         setContent(newValue)
+    }
+    const handleUpload = (e) => {
+        setFile(e.target.files[0])
+        const formData = new FormData();
+        formData.append('file', file);
+        axios
+            .post(
+                api_comp + "/add/image/" + id,
+                formData,
+                {
+                    responseType: "arraybuffer",
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                }
+            )
+            .then((response) => {
+                if (response.status == 200) {
+                    alert("file uploaded")
+                }
+
+            })
+            .catch(function () {
+                alert("check your file")
+            })
     }
     const Compile = () => {
 
@@ -78,16 +105,17 @@ function Document() {
                         "title": title,
                         "content": content
                     }, {
-                        headers: {
-                            "Authorization": `Token ${localStorage.getItem("token")}`
-                        }}
-                ).then(res=> {if (res.status==200){console.log(res.status)}else{ alert("LaTex code compiled but not saved")}})
-            }else{
-               alert("internal server error")
+                    headers: {
+                        "Authorization": `Token ${localStorage.getItem("token")}`
+                    }
+                }
+                ).then(res => { if (res.status == 200) { console.log(res.status) } else { alert("LaTex code compiled but not saved") } })
+            } else {
+                alert("internal server error")
             }
         })
     }
-    const handleTitle = (e)=>{
+    const handleTitle = (e) => {
         setTitle(e.target.value)
     }
     const Docx = () => {
@@ -107,11 +135,12 @@ function Document() {
             alert("check your latex code")
         })
     }
-    const download= () =>{
-        if (fileUrl != null){
+    const download = () => {
+        if (fileUrl != null) {
             window.open(fileUrl)
         }
-    } 
+    }
+
     return (
         <>
 
@@ -126,6 +155,8 @@ function Document() {
                         </div>
                         <div className="column"><input placeholder="Title of the document" onChange={handleTitle} value={title} /></div>
                         <div className="column">
+                            <label for="files" class="button button-black button-clear float-right file-label">Upload</label>
+                            <input className="hidden" id="files" type="file" onChange={handleUpload} />
 
                             <button className="button button-black button-outline float-right " onClick={Docx}>docx</button>
                         </div>
@@ -146,7 +177,8 @@ function Document() {
                     />
                 </div>
                 <div className="column">
-                    <Doc fileUrl={fileUrl} key={seed} />
+                    {fileUrl != null ? <Doc fileUrl={fileUrl} key={seed} /> : <></>}
+
                 </div>
             </div>
 

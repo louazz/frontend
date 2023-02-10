@@ -22,7 +22,7 @@ function Nav() {
             <div className="container">
                 <br />
                 <div className="row">
-                    <div className="column"><h4>Encry=||=LaTex</h4></div>
+                    <div className="column"><h4 onClick={()=> {navigate("/search")}}>Encry=||=LaTex</h4></div>
                     {logged == false ? <div className="column"><button className="button button-outline float-right"><Link to="/signup">Signup</Link></button><button className="button button-clear float-right"><Link to="/">Login</Link> </button></div> : <div className="column"><button className="button button-outline float-right" onClick={logout}>logout</button></div>
 
                     }    </div>
