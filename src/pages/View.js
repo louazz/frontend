@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router";
 import Doc from "../components/Doc.tsx";
-import Sample from '../assets/sample.pdf'
 import { useState, useEffect } from "react";
 import axios from "axios";
 function View() {
@@ -14,7 +13,7 @@ function View() {
     let navigate = useNavigate()
     useEffect(() => {
         if (localStorage.getItem("token") == undefined) {
-            navigate("/")
+            navigate("/login")
         } else {
             if (checker == false) {
                 axios.get(api + "/api/doc/" + id, {

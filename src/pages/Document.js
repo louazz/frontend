@@ -6,7 +6,6 @@ import "ace-builds/src-noconflict/mode-latex";
 import "ace-builds/src-noconflict/theme-solarized_light";
 import "ace-builds/src-noconflict/ext-language_tools";
 import Doc from "../components/Doc.tsx"
-import Sample from '../assets/sample.pdf'
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import FileSaver from "file-saver";
@@ -23,7 +22,7 @@ function Document() {
     let { id } = useParams();
     useEffect(() => {
         if (localStorage.getItem("token") == undefined) {
-            navigate("/")
+            navigate("/login")
         } else {
             if (checker == false) {
                 axios.get(api + "/api/doc/" + id, {

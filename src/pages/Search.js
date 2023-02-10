@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import image from "./img4.jpg";
+import image from "../assets/first-post.png";
 import axios from "axios";
 import { useNavigate } from "react-router";
 function Search() {
@@ -19,7 +19,7 @@ function Search() {
     const api = "http://localhost:8080"
     useEffect(() => {
         if (localStorage.getItem("token") == undefined || localStorage.getItem("token") == null) {
-            navigate("/")
+            navigate("/login")
         } else {
             if (checker == false) {
                 axios.get(api + "/api/docs", {
