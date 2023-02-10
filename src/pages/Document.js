@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import AceEditor from "react-ace";
 import "../App.css"
 import "ace-builds/src-noconflict/mode-latex";
-import "ace-builds/src-noconflict/theme-solarized_light";
+import "ace-builds/src-noconflict/theme-chrome";
 import "ace-builds/src-noconflict/ext-language_tools";
 import Doc from "../components/Doc.tsx"
 import { useNavigate, useParams } from "react-router";
@@ -142,9 +142,10 @@ function Document() {
 
     return (
         <>
-
+<br/>
             <div className="row" >
                 <div className="column">
+                    <div className="container">
                     <div className="row">
                         <div className="column">
                             <button className="button button-black button-clear float-left" onClick={Compile}>Run</button>
@@ -163,7 +164,7 @@ function Document() {
 
                     <AceEditor
                         mode="latex"
-                        theme="solarized_light"
+                        theme="chrome"
                         onChange={onChange}
                         name="UNIQUE_ID_OF_DIV"
                         editorProps={{ $blockScrolling: true }}
@@ -175,8 +176,12 @@ function Document() {
                         enableSnippets={true}
                     />
                 </div>
+                </div>
                 <div className="column">
+                <div className="container">
                     {fileUrl != null ? <Doc fileUrl={fileUrl} key={seed} /> : <></>}
+
+                </div>
 
                 </div>
             </div>

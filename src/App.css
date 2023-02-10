@@ -10,13 +10,13 @@ body {
   left: 0;
 }
 .button-black {
-  background-color: rgb(36, 32, 32);
-  border-color:  rgb(36, 32, 32);
+  background-color: rgb(102, 71, 75);
+  border-color:  rgb(102, 71, 75);
 }
 .button-black.button-clear,
 .button-black.button-outline {
   background-color: transparent;
-  color:  rgb(36, 32, 32);
+  color:  rgb(102, 71, 75);
 }
 .button-black.button-clear {
   border-color: transparent;
@@ -28,4 +28,15 @@ input[type=file].hidden {
   visibility: hidden;
   width: 15rem;
   margin-left: -15rem;
+}
+
+.c{
+  position: relative;
+  text-align: center;
+  color: white
+}
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
 }

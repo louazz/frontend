@@ -1,4 +1,4 @@
-import image from "./img5.jpg";
+import image from "../assets/first-post.png";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -42,7 +42,12 @@ useEffect(()=>{
       <blockquote>
         <p><em>This application enables the user to edit and generate LaTex documents online</em> sign up now and enjoy the features</p>
       </blockquote>
+      
+      <div className="c">
       <img src={image} height="" />
+            <h1 className="top-left">Sign Up</h1>
+            
+            </div>
       <br />
       <br />
       <h2>Sign Up</h2>

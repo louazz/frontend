@@ -1,7 +1,8 @@
 import image from '../assets/first-post.png';
 import { loremIpsum , LoremIpsum} from "lorem-ipsum";
+import { useNavigate } from 'react-router';
 function Home() {
-
+const navigate= useNavigate()
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
       max: 8,
@@ -17,26 +18,26 @@ const lorem = new LoremIpsum({
             <img src={image} />
             <br />
             <blockquote>
-                <p><em>{lorem.generateSentences(5)}</em></p>
+                <p><em>The application allows the users to create Latex documents and compile them online. you may start by creating a new latex document from scratch or use a template provided by our platform. Remember that you can always export your work to DOCX format while clicking on the DOCX button</em></p>
             </blockquote>
             <br/>
             <div className='row'>
                 <div className='column'>
-                    <h4>Title</h4>
-                    <p>{lorem.generateSentences(2)}</p>
+                    <h4>Register</h4>
+                    <p>create an account and <a onClick={()=>{navigate("/login")}}>login</a> ; you should enter a vaid username and password. You will recieve a confirmation email once the registration is succeeded. if you've forgot your password you can always click on the forgot credential that will allow you to generate new password</p>
                 </div>
                 <div className='column'>
-                    <h4>Title</h4>
-                    <p>{lorem.generateSentences(2)}</p>
+                    <h4>View & Edit</h4>
+                    <p>Navigate to search and create a Latex document while specifying the title and the template. if you want to view an existing document click on the view button that corresponds to the relevant title. If feel that you need to review the LaTex syntax, you can click on documentation link on the navigation bar.</p>
                 </div>
             </div>
             <div className='row'>
                 <div className='column'>
-                    <h4>Title</h4>
-                    <p>{lorem.generateSentences(2)}</p>
+                    <h4>Compile, Run, & Export</h4>
+                    <p>Once the document to edit is chosen you can click on the RUN button to compile and SAVE your LaTex code. To upload a configuration file or an image, click on the upload button and choose the target entity. To export a document to Microsoft Word readable format click on DOCX button</p>
                 </div>
                 <div className='column'>
-                    <h4>Title</h4>
+                    <h4>Our Mission</h4>
                     <p>{lorem.generateSentences(2)}</p>
                 </div>
             </div>

@@ -106,7 +106,15 @@ function Search() {
             <blockquote>
                 <p><em>edit, view and create LaTex documents online </em></p>
             </blockquote>
-            <img src={image} />
+            <div className="c">
+            <img src={image}/>
+            <div className="top-left">
+            <h1 >Search for a document</h1>
+          
+                <h4>View , edit, compile, and export LaTex</h4>
+            
+            </div>
+            </div>
             <br />
 
             <h2>documents</h2>
