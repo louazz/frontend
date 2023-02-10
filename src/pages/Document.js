@@ -49,7 +49,7 @@ function Document() {
                             setChecker(true);
 
                         })
-                    } else { alert("server error") }
+                    } else { localStorage.clear(); alert("server error") }
                 })
 
             }

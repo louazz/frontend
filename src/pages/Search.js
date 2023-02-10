@@ -33,6 +33,7 @@ function Search() {
                             setData(response.data)
                             setChecker(true)
                         } else {
+                            localStorage.clear()
                             alert("An error has occured, please try to refresh the page")
                         }
                     }

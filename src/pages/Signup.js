@@ -51,11 +51,11 @@ useEffect(()=>{
       <br />
       <br />
       <h2>Sign Up</h2>
+      
+
+        <div className="row"><div className="column"><label>Username</label><input placeholder="Username" type="text" onChange={handleUsername} /></div> < div className="column"><label>Email</label><input placeholder="email" type="email" onChange={handleEmail} /></div></div>
+      <label>Password</label>  <input placeholder="Password" type="password" onChange={handlePassword}/>
       <center>
-
-        <div className="row"><div className="column"><input placeholder="Username" type="text" onChange={handleUsername} /></div> < div className="column"><input placeholder="email" type="email" onChange={handleEmail} /></div></div>
-        <input placeholder="Password" type="password" onChange={handlePassword}/>
-
         <button onClick={submit} >Submit</button>
       </center>
 
