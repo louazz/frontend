@@ -22,22 +22,22 @@ function Nav() {
             <div className="container">
                 <br />
                 <div className="row">
-                    <div className="column"><h4 onClick={() =>  ()=>{navigate("/search") }}>Encry=||=LaTex</h4> <center><div className="row">
+                    <div className="column"><h4 onClick={() =>  ()=>{navigate("/search") }}>Encry=||=LaTex</h4>  </div>
                         <div className="column">
-                            <a className="float-left" onClick={()=>{navigate("/")}}>Home</a>
-                            </div>
-                            <div className="column">
-                                <a className="float-left" onClick={()=>{navigate("/search")}}>
+                            <a  onClick={()=>{navigate("/")}}>Home</a>
+                            &nbsp;
+                            &nbsp;
+                                <a  onClick={()=>{navigate("/search")}}>
                                     Search</a>
-                                    </div>
-                                    <div className="column">
-                                        <a className="float-left" onClick={()=>{navigate('/documentation')}}>
+                                    &nbsp;
+                                    &nbsp;
+                                        <a  onClick={()=>{navigate('/documentation')}}>
                                             Documentation</a>
-                                            </div></div></center>
                                             </div>
+                                           
 
 
-                    {logged == false ? <div className="column"><button className="button button-outline float-right" onClick={()=>[navigate("/signup")]}>Signup</button><button className="button button-clear float-right" onClick={()=>{navigate("/login")}}>Login </button></div> : <div className="column"><button className="button button-outline float-right" onClick={logout}>logout</button></div>
+                    {logged == false ? <><div className="column"><button className="button button-outline float-right" onClick={() => [navigate("/signup")]}>Signup</button>&nbsp;<button className="button button-clear float-right" onClick={() => { navigate("/login"); } }>Login </button></div></> : <div className="column"><button className="button button-outline float-right" onClick={logout}>logout</button></div>
 
                     }    </div>
             </div>

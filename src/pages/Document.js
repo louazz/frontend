@@ -142,8 +142,11 @@ function Document() {
 
     return (
         <>
-<br/>
-            <div className="row" >
+        <div className="container">
+        <hr className="new"/>
+        </div>
+
+            <div className="row test" >
                 <div className="column">
                     <div className="container">
                     <div className="row">

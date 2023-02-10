@@ -43,6 +43,9 @@ const lorem = new LoremIpsum({
             </div>
             <div className='row'>
                 <div className='column'>
+                    <label for='email'>Email</label>
+                    <input id="email" type="email" placeholder='your Email'/>
+                    <br/>
                 <label for="commentField">Feedback</label>
     <textarea placeholder="Feedback" id="commentField"></textarea>
     <button> submit</button>
