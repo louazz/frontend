@@ -1,7 +1,11 @@
 import image from '../assets/first-post.png';
 import { loremIpsum , LoremIpsum} from "lorem-ipsum";
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
+import axios from 'axios';
 function Home() {
+    const [email, setEmail]= useState()
+    const [feedback, setFeedback]= useState()
 const navigate= useNavigate()
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -13,6 +17,18 @@ const lorem = new LoremIpsum({
       min: 4
     }
   });
+  const handleEmail=(e)=>{
+    setEmail(e.target.value)
+  }
+  const handleFeedback= (e)=>{
+    setFeedback(e.target.value)
+  }
+  const submit=()=>{
+    axios.post("http://localhost:8080/api/feedback",{
+        email: email,
+        feedback: feedback
+    }).then(res=>{ if (res.status==200){alert("message sent")}else{alert("internal server error")}})
+  }
     return (
         <div className="container">
             <img src={image} />
@@ -44,11 +60,11 @@ const lorem = new LoremIpsum({
             <div className='row'>
                 <div className='column'>
                     <label for='email'>Email</label>
-                    <input id="email" type="email" placeholder='your Email'/>
+                    <input id="email" type="email" placeholder='your Email' onChange={handleEmail} />
                     <br/>
                 <label for="commentField">Feedback</label>
-    <textarea placeholder="Feedback" id="commentField"></textarea>
-    <button> submit</button>
+    <textarea placeholder="Feedback" id="commentField" onChange={handleFeedback}></textarea>
+    <button onClick={submit}> submit</button>
                 </div>
             </div>
         </div>
