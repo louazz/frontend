@@ -25,7 +25,7 @@ const lorem = new LoremIpsum({
     setFeedback(e.target.value)
   }
   const submit=()=>{
-    axios.post("/api/feedback",{
+    axios.post(api+"/api/feedback",{
         email: email,
         feedback: feedback
     }).then(res=>{ if (res.status==200){alert("message sent")}else{alert("internal server error")}})
