@@ -55,7 +55,7 @@ const lorem = new LoremIpsum({
                 </div>
                 <div className='column'>
                     <h4>Our Mission</h4>
-                    <p>{lorem.generateSentences(2)}</p>
+                    <p>Our mission is to give users the best experience while writing their documents. EncryLatex will allow the user to enjoy writing any type of document using the famous LaTex language</p>
                 </div>
             </div>
             <div className='row'>
