@@ -52,6 +52,7 @@ function Search() {
             res => {
                 if (res.status == 200) {
                     // alert("document deleted")
+                    axios.get("http://localhost:500/delete/files/"+id)
                     setChecker(false)
                 } else if (res.status == 400) { localStorage.clear() }
                 else {
@@ -84,14 +85,15 @@ function Search() {
             axios.post(api + '/api/doc', {
                 title: title,
                 content: `\n\\documentclass[11pt]{article}
+                \n\\usepackage{lipsum} 
                \n\\title{ Title}
                 \n\\author{ Author }
                 \n\\date{\today}
                 \n\\begin{document}
                 \n\\maketitle	
-                \n\\pagebreak
+                \n\\lipsum[2-10]
                 \n\\section{Section 1}
-                Lorem Impsum
+                \n\\lipsum[2-10]
                 \n\\pagebreak
                 \n\\end{document}`
             }, {

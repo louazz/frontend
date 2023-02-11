@@ -6,6 +6,7 @@ import axios from 'axios';
 function Home() {
     const [email, setEmail]= useState()
     const [feedback, setFeedback]= useState()
+    const api="http://localhost:8080"
 const navigate= useNavigate()
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -24,7 +25,7 @@ const lorem = new LoremIpsum({
     setFeedback(e.target.value)
   }
   const submit=()=>{
-    axios.post("http://localhost:8080/api/feedback",{
+    axios.post("/api/feedback",{
         email: email,
         feedback: feedback
     }).then(res=>{ if (res.status==200){alert("message sent")}else{alert("internal server error")}})
