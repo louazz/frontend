@@ -6,7 +6,7 @@ import axios from 'axios';
 function Home() {
     const [email, setEmail]= useState()
     const [feedback, setFeedback]= useState()
-    const api="http://localhost:8080"
+    const api="http://164.92.84.141"
 const navigate= useNavigate()
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {

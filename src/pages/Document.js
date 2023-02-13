@@ -17,8 +17,8 @@ function Document() {
     const [seed, setSeed] = useState(1)
     const [title, setTitle] = useState("")
     const navigate = useNavigate()
-    let api = "http://localhost:8080"
-    let api_comp = "http://localhost:5000"
+    let api = "http://164.92.84.141"
+    let api_comp = "http://137.184.47.116"
     let { id } = useParams();
     useEffect(() => {
         if (localStorage.getItem("token") == undefined) {

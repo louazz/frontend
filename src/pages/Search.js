@@ -16,7 +16,7 @@ function Search() {
     const [search, setSearch] = useState("")
     const navigate = useNavigate()
     const [checker, setChecker] = useState(false);
-    const api = "http://localhost:8080"
+    const api = "http://164.92.84.141"
     useEffect(() => {
         if (localStorage.getItem("token") == undefined || localStorage.getItem("token") == null) {
             navigate("/login")

@@ -8,8 +8,8 @@ function View() {
     const [checker, setChecker]= useState(false)
     const [seed, setSeed] = useState(1)
     const [fileUrl, setFileUrl]=useState(null)
-    const api= "http://localhost:8080"
-    const api_comp= "http://localhost:5000"
+    const api= "http://164.92.84.141"
+    const api_comp= "http://137.184.47.116"
     let navigate = useNavigate()
     useEffect(() => {
         if (localStorage.getItem("token") == undefined) {

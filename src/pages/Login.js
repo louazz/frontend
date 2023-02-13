@@ -6,7 +6,7 @@ function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
-    const api = "http://localhost:8080"
+    const api = "http://164.92.84.141"
     const submit = () => {
         axios.post(api + "/api/login", {
             username: username,
