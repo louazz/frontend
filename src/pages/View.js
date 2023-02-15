@@ -2,14 +2,16 @@ import { useNavigate, useParams } from "react-router";
 import Doc from "../components/Doc.tsx";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function View() {
     let { id } = useParams();
-    const [content, setContent]= useState("")
-    const [checker, setChecker]= useState(false)
+    const [content, setContent] = useState("")
+    const [checker, setChecker] = useState(false)
     const [seed, setSeed] = useState(1)
-    const [fileUrl, setFileUrl]=useState(null)
-    const api= "http://164.92.84.141"
-    const api_comp= "http://137.184.47.116"
+    const [fileUrl, setFileUrl] = useState(null)
+    const api = "http://164.92.84.141"
+    const api_comp = "http://137.184.47.116"
     let navigate = useNavigate()
     useEffect(() => {
         if (localStorage.getItem("token") == undefined) {
@@ -37,10 +39,10 @@ function View() {
                             setFileUrl(fileUrl)
                             setSeed(Math.random())
                             setChecker(true);
-                        
+
 
                         })
-                    } else { alert("server error") }
+                    } else { toast("server error") }
                 })
 
             }
@@ -48,7 +50,19 @@ function View() {
     })
     return (
         <div class="container">
- {fileUrl!=null? <Doc fileUrl={fileUrl} key={seed} />: <></>}
+            {fileUrl != null ? <Doc fileUrl={fileUrl} key={seed} /> : <></>}
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </div>
     )
 }

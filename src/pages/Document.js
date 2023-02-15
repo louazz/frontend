@@ -9,6 +9,9 @@ import Doc from "../components/Doc.tsx"
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import FileSaver from "file-saver";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Document() {
     const [file, setFile] = useState();
     const [fileUrl, setFileUrl] = useState(null);
@@ -49,7 +52,7 @@ function Document() {
                             setChecker(true);
 
                         })
-                    } else { localStorage.clear(); alert("server error") }
+                    } else { localStorage.clear(); toast("server error") }
                 })
 
             }
@@ -75,12 +78,12 @@ function Document() {
             )
             .then((response) => {
                 if (response.status == 200) {
-                    alert("file uploaded")
+                    toast("file uploaded")
                 }
 
             })
             .catch(function () {
-                alert("check your file")
+                toast("check your file")
             })
     }
     const Compile = () => {
@@ -108,9 +111,9 @@ function Document() {
                         "Authorization": `Token ${localStorage.getItem("token")}`
                     }
                 }
-                ).then(res => { if (res.status == 200) { console.log(res.status) } else { alert("LaTex code compiled but not saved") } })
+                ).then(res => { if (res.status == 200) { console.log(res.status) } else { toast("LaTex code compiled but not saved") } })
             } else {
-                alert("internal server error")
+                toast("internal server error")
             }
         })
     }
@@ -131,7 +134,7 @@ function Document() {
             var file = new Blob([res.data])
             FileSaver.saveAs(file, `document_${id}.docx`)
         }).catch(function () {
-            alert("check your latex code")
+            toast("check your latex code")
         })
     }
     const download = () => {
@@ -142,53 +145,64 @@ function Document() {
 
     return (
         <>
-        <div className="container">
-        <hr className="new"/>
-        </div>
+            <div className="container">
+                <hr className="new" />
+            </div>
 
             <div className="row test" >
                 <div className="column">
                     <div className="container">
-                    <div className="row">
-                        <div className="column">
-                            <button className="button button-black button-clear float-left" onClick={Compile}>Run</button>
+                        <div className="row">
+                            <div className="column">
+                                <button className="button button-black button-clear float-left" onClick={Compile}>Run</button>
 
-                            <button className="button button-black button-outline" onClick={download}>PDF</button>
+                                <button className="button button-black button-outline" onClick={download}>PDF</button>
 
+                            </div>
+                            <div className="column"><input placeholder="Title of the document" onChange={handleTitle} value={title} /></div>
+                            <div className="column">
+                                <label for="files" class="button button-black button-clear float-right file-label">Upload</label>
+                                <input className="hidden" id="files" type="file" onChange={handleUpload} />
+
+                                <button className="button button-black button-outline float-right " onClick={Docx}>docx</button>
+                            </div>
                         </div>
-                        <div className="column"><input placeholder="Title of the document" onChange={handleTitle} value={title} /></div>
-                        <div className="column">
-                            <label for="files" class="button button-black button-clear float-right file-label">Upload</label>
-                            <input className="hidden" id="files" type="file" onChange={handleUpload} />
 
-                            <button className="button button-black button-outline float-right " onClick={Docx}>docx</button>
-                        </div>
+                        <AceEditor
+                            mode="latex"
+                            theme="chrome"
+                            onChange={onChange}
+                            name="UNIQUE_ID_OF_DIV"
+                            editorProps={{ $blockScrolling: true }}
+                            height="1010px"
+                            width="100%"
+                            value={content}
+                            enableBasicAutocompletion={true}
+                            enableLiveAutocompletion={true}
+                            enableSnippets={true}
+                        />
                     </div>
-
-                    <AceEditor
-                        mode="latex"
-                        theme="chrome"
-                        onChange={onChange}
-                        name="UNIQUE_ID_OF_DIV"
-                        editorProps={{ $blockScrolling: true }}
-                        height="1010px"
-                        width="100%"
-                        value={content}
-                        enableBasicAutocompletion={true}
-                        enableLiveAutocompletion={true}
-                        enableSnippets={true}
-                    />
-                </div>
                 </div>
                 <div className="column">
-                <div className="container">
-                    {fileUrl != null ? <Doc fileUrl={fileUrl} key={seed} /> : <></>}
+                    <div className="container">
+                        {fileUrl != null ? <Doc fileUrl={fileUrl} key={seed} /> : <></>}
 
-                </div>
+                    </div>
 
                 </div>
             </div>
-
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
 
         </>
     )

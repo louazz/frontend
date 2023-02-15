@@ -2,15 +2,10 @@ import { useEffect, useState } from "react";
 import image from "../assets/first-post.png";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Search() {
     const [data, setData] = useState([
-        { ID: "58s5d5f5g555565431", title: "lord of the rings" },
-        { ID: "58s5d5f5g555565431", title: "Foundation 1" },
-        { ID: "58s5d5f5g555565431", title: "Dune" },
-        { ID: "58s5d5f5g555565431", title: "Harry Potter 1" },
-        { ID: "58s5d5f5g555565431", title: "lord of the rings 2" },
-        { ID: "58s5d5f5g555565431", title: "lord of the rings 4" },
-
     ])
     const [res, setRes] = useState(data)
     const [search, setSearch] = useState("")
@@ -34,7 +29,7 @@ function Search() {
                             setChecker(true)
                         } else {
                             localStorage.clear()
-                            alert("An error has occured, please try to refresh the page")
+                            toast("An error has occured, please try to refresh the page")
                         }
                     }
                 )
@@ -52,11 +47,11 @@ function Search() {
             res => {
                 if (res.status == 200) {
                     // alert("document deleted")
-                    axios.get("http://localhost:500/delete/files/"+id)
+                    axios.get("http://localhost:500/delete/files/" + id)
                     setChecker(false)
                 } else if (res.status == 400) { localStorage.clear() }
                 else {
-                    alert("internal server error")
+                    toast("internal server error")
                 }
             }
         )
@@ -110,13 +105,13 @@ function Search() {
                 <p><em>edit, view and create LaTex documents online </em></p>
             </blockquote>
             <div className="c">
-            <img src={image}/>
-            <div className="top-left">
-            <h1 >Search for a document</h1>
-          
-                <h4>View , edit, compile, and export LaTex</h4>
-            
-            </div>
+                <img src={image} />
+                <div className="top-left">
+                    <h1 >Search for a document</h1>
+
+                    <h4>View , edit, compile, and export LaTex</h4>
+
+                </div>
             </div>
             <br />
 
@@ -172,6 +167,18 @@ function Search() {
                     </tbody>
                 </table>
             </center>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </div>
     )
 }

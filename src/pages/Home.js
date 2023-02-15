@@ -1,35 +1,37 @@
 import image from '../assets/first-post.png';
-import { loremIpsum , LoremIpsum} from "lorem-ipsum";
+import { loremIpsum, LoremIpsum } from "lorem-ipsum";
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Home() {
-    const [email, setEmail]= useState()
-    const [feedback, setFeedback]= useState()
-    const api="http://164.92.84.141"
-const navigate= useNavigate()
-const lorem = new LoremIpsum({
-    sentencesPerParagraph: {
-      max: 8,
-      min: 4
-    },
-    wordsPerSentence: {
-      max: 16,
-      min: 4
+    const [email, setEmail] = useState()
+    const [feedback, setFeedback] = useState()
+    const api = "http://164.92.84.141"
+    const navigate = useNavigate()
+    const lorem = new LoremIpsum({
+        sentencesPerParagraph: {
+            max: 8,
+            min: 4
+        },
+        wordsPerSentence: {
+            max: 16,
+            min: 4
+        }
+    });
+    const handleEmail = (e) => {
+        setEmail(e.target.value)
     }
-  });
-  const handleEmail=(e)=>{
-    setEmail(e.target.value)
-  }
-  const handleFeedback= (e)=>{
-    setFeedback(e.target.value)
-  }
-  const submit=()=>{
-    axios.post(api+"/api/feedback",{
-        email: email,
-        feedback: feedback
-    }).then(res=>{ if (res.status==200){alert("message sent")}else{alert("internal server error")}})
-  }
+    const handleFeedback = (e) => {
+        setFeedback(e.target.value)
+    }
+    const submit = () => {
+        axios.post(api + "/api/feedback", {
+            email: email,
+            feedback: feedback
+        }).then(res => { if (res.status == 200) { toast("message sent") } else { toast("internal server error") } })
+    }
     return (
         <div className="container">
             <img src={image} />
@@ -37,11 +39,11 @@ const lorem = new LoremIpsum({
             <blockquote>
                 <p><em>The application allows the users to create Latex documents and compile them online. you may start by creating a new latex document from scratch or use a template provided by our platform. Remember that you can always export your work to DOCX format while clicking on the DOCX button</em></p>
             </blockquote>
-            <br/>
+            <br />
             <div className='row'>
                 <div className='column'>
                     <h4>Register</h4>
-                    <p>create an account and <a onClick={()=>{navigate("/login")}}>login</a> ; you should enter a vaid username and password. You will recieve a confirmation email once the registration is succeeded. if you've forgot your password you can always click on the forgot credential that will allow you to generate new password</p>
+                    <p>create an account and <a onClick={() => { navigate("/login") }}>login</a> ; you should enter a vaid username and password. You will recieve a confirmation email once the registration is succeeded. if you've forgot your password you can always click on the forgot credential that will allow you to generate new password</p>
                 </div>
                 <div className='column'>
                     <h4>View & Edit</h4>
@@ -62,12 +64,24 @@ const lorem = new LoremIpsum({
                 <div className='column'>
                     <label for='email'>Email</label>
                     <input id="email" type="email" placeholder='your Email' onChange={handleEmail} />
-                    <br/>
-                <label for="commentField">Feedback</label>
-    <textarea placeholder="Feedback" id="commentField" onChange={handleFeedback}></textarea>
-    <button onClick={submit}> submit</button>
+                    <br />
+                    <label for="commentField">Feedback</label>
+                    <textarea placeholder="Feedback" id="commentField" onChange={handleFeedback}></textarea>
+                    <button onClick={submit}> submit</button>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </div>
     )
 }

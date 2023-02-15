@@ -2,6 +2,8 @@ import image from "../assets/first-post.png";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -14,12 +16,19 @@ function Login() {
         }
         ).then(
             res => {
+
+
                 if (res.status == 200) {
                     localStorage.setItem("token", res.data["token"])
                     navigate("/search")
                 } else {
-                    alert("try logging in again, an error has occured")
+
+                    toast("try logging in again, an error has occured")
                 }
+            }
+        ).catch(
+            function (error) {
+                toast("internal server error")
             }
         )
     }
@@ -54,7 +63,18 @@ function Login() {
             <center>
                 <button onClick={submit}>Submit</button>
             </center>
-
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
 
         </div>
     )
