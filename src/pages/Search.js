@@ -11,7 +11,7 @@ function Search() {
     const [search, setSearch] = useState("")
     const navigate = useNavigate()
     const [checker, setChecker] = useState(false);
-    const api = "http://164.92.84.141"
+    const api = "http://backend.encrylatex.live"
     useEffect(() => {
         if (localStorage.getItem("token") == undefined || localStorage.getItem("token") == null) {
             navigate("/login")

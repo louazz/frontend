@@ -8,7 +8,7 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const api = "http://164.92.84.141";
+  const api = "http://backend.encrylatex.live";
   const navigate = useNavigate();
   function submit() {
     axios.post(api + '/api/register', {

@@ -20,7 +20,7 @@ function Document() {
     const [seed, setSeed] = useState(1)
     const [title, setTitle] = useState("")
     const navigate = useNavigate()
-    let api = "http://164.92.84.141"
+    let api = "http://backend.encrylatex.live"
     let api_comp = "http://137.184.47.116"
     let { id } = useParams();
     useEffect(() => {

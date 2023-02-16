@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function Home() {
     const [email, setEmail] = useState()
     const [feedback, setFeedback] = useState()
-    const api = "http://164.92.84.141"
+    const api = "http://backend.encrylatex.live"
     const navigate = useNavigate()
     const lorem = new LoremIpsum({
         sentencesPerParagraph: {
