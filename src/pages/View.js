@@ -11,7 +11,7 @@ function View() {
     const [seed, setSeed] = useState(1)
     const [fileUrl, setFileUrl] = useState(null)
     const api = "https://backend.encrylatex.live"
-    const api_comp = "http://137.184.47.116"
+    const api_comp = "https://ruby.encrylatex.live"
     let navigate = useNavigate()
     useEffect(() => {
         if (localStorage.getItem("token") == undefined) {

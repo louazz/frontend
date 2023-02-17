@@ -21,7 +21,7 @@ function Document() {
     const [title, setTitle] = useState("")
     const navigate = useNavigate()
     let api = "https://backend.encrylatex.live"
-    let api_comp = "http://137.184.47.116"
+    let api_comp = "https://ruby.encrylatex.live"
     let { id } = useParams();
     useEffect(() => {
         if (localStorage.getItem("token") == undefined) {
