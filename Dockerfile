@@ -8,7 +8,6 @@ RUN npm i
 RUN npm install -g serve
 
 
-RUN npm run build
 ENV NODE_ENV production
 
 
