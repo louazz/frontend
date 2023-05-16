@@ -1,4 +1,4 @@
-import image from "../assets/first-post.png";
+import image from "../assets/first-post.jpg";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,13 +11,13 @@ function Signup() {
   const api = "https://backend.encrylatex.live";
   const navigate = useNavigate();
   function submit() {
-    axios.post(api + '/api/register', {
+    axios.post(api + '/api/signup', {
       username: username,
       password: password,
       email: email
     }).then(
       res => {
-        if (res.status == 200) {
+        if (res.status == 201) {
           toast('registration succeeded')
           navigate("/login")
         } else {
@@ -49,7 +49,7 @@ function Signup() {
       </blockquote>
 
       <div className="c">
-        <img src={image} height="" />
+        <img className="img" src={image} height="" />
         <h1 className="top-left">Sign Up</h1>
 
       </div>
@@ -61,7 +61,7 @@ function Signup() {
       <div className="row"><div className="column"><label>Username</label><input placeholder="Username" type="text" onChange={handleUsername} /></div> < div className="column"><label>Email</label><input placeholder="email" type="email" onChange={handleEmail} /></div></div>
       <label>Password</label>  <input placeholder="Password" type="password" onChange={handlePassword} />
       <center>
-        <button onClick={submit} >Submit</button>
+        <button   className="button" onClick={submit} >Submit</button>
       </center>
       <ToastContainer
         position="top-center"

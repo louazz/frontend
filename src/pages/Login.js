@@ -1,4 +1,4 @@
-import image from "../assets/first-post.png";
+import image from "../assets/first-post.jpg";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
@@ -10,7 +10,7 @@ function Login() {
     const navigate = useNavigate()
     const api = "https://backend.encrylatex.live"
     const submit = () => {
-        axios.post(api + "/api/login", {
+        axios.post(api + "/api/signin", {
             username: username,
             password: password
         }
@@ -18,7 +18,8 @@ function Login() {
             res => {
 
 
-                if (res.status == 200) {
+                if (res.status == 200 || res.status==201 || res.status==201) {
+                    localStorage.setItem("userId",  res.data["userId"])
                     localStorage.setItem("token", res.data["token"])
                     navigate("/search")
                 } else {
@@ -49,7 +50,7 @@ function Login() {
                 <p><em>This application enables the user to edit and generate LaTex documents online</em></p>
             </blockquote>
             <div className="c">
-                <img src={image} />
+                <img className="img" src={image} />
                 <h1 className="top-left">Login</h1>
 
             </div>
@@ -61,7 +62,7 @@ function Login() {
             <label>Password</label>
             <input placeholder="Password" type="password" onChange={handlePassword} />
             <center>
-                <button onClick={submit}>Submit</button>
+                <button className="button" onClick={submit}>Submit</button>
             </center>
             <ToastContainer
                 position="top-center"

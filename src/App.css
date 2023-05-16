@@ -10,13 +10,13 @@ body {
   left: 0;
 }
 .button-black {
-  background-color: rgb(102, 71, 75);
-  border-color:  rgb(102, 71, 75);
+  background-color: #24527a;
+  border-color:  #24527a;
 }
 .button-black.button-clear,
 .button-black.button-outline {
   background-color: transparent;
-  color:  rgb(102, 71, 75);
+  color:  #24527a;
 }
 .button-black.button-clear {
   border-color: transparent;
@@ -33,13 +33,50 @@ input[type=file].hidden {
 .c{
   position: relative;
   text-align: center;
-  color: white
+  color: #24527a; 
 }
+
 .top-left {
   position: absolute;
-  top: 8px;
-  left: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 hr.new {
   border-top: 1px dashed rgb(102, 71, 75);
+}
+
+.img{
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.first-color { 
+	background: #5dacbd; 
+}
+	
+.second-color { 
+	background: #24527a; 
+}
+
+.third-color { 
+	background: #a7bcb9; 
+}
+
+.fourth-color { 
+	background: #e0ebeb; 
+}
+a{
+  color:#24527a
+}
+.button {
+  background-color: #24527a;
+  border-color:  #24527a;
+}
+.button.button-clear,
+.button.button-outline {
+  background-color: transparent;
+  color:  #24527a;
 }

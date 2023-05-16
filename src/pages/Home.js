@@ -1,4 +1,4 @@
-import image from '../assets/first-post.png';
+import image from '../assets/first-post.jpg';
 import { loremIpsum, LoremIpsum } from "lorem-ipsum";
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
@@ -30,12 +30,22 @@ function Home() {
         axios.post(api + "/api/feedback", {
             email: email,
             feedback: feedback
-        }).then(res => { if (res.status == 200) { toast("message sent") } else { toast("internal server error") } })
+        }).then(res => { if (res.status == 200 || res.status==201) { toast("message sent") } else { toast("internal server error") } })
     }
     return (
-        <div className="container">
-            <img src={image} />
+        <>
+        <div className="container fourth">
+        <div className="c1">
+            <img className="img" src={image} />
+            <div className="top-left">
+                <h2>Welcome to EncryLatex</h2>
+                <h4>You can now start viewing, editing and compiling laTeX document </h4>
+              <center><button class="button" onClick={()=>{navigate("/signup")}}>Sign in</button></center>
+            </div>
+            </div>
+            </div>
             <br />
+            <div className="container fourth-color">
             <blockquote>
                 <p><em>The application allows the users to create Latex documents and compile them online. you may start by creating a new latex document from scratch or use a template provided by our platform. Remember that you can always export your work to DOCX format while clicking on the DOCX button</em></p>
             </blockquote>
@@ -67,7 +77,7 @@ function Home() {
                     <br />
                     <label for="commentField">Feedback</label>
                     <textarea placeholder="Feedback" id="commentField" onChange={handleFeedback}></textarea>
-                    <button onClick={submit}> submit</button>
+                    <button class="button" onClick={submit}> submit</button>
                 </div>
             </div>
             <ToastContainer
@@ -82,7 +92,7 @@ function Home() {
                 pauseOnHover
                 theme="colored"
             />
-        </div>
+        </div></>
     )
 }
 export default Home;

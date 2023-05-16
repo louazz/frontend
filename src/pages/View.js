@@ -11,24 +11,23 @@ function View() {
     const [seed, setSeed] = useState(1)
     const [fileUrl, setFileUrl] = useState(null)
     const api = "https://backend.encrylatex.live"
-    const api_comp = "https://ruby.encrylatex.live"
     let navigate = useNavigate()
     useEffect(() => {
         if (localStorage.getItem("token") == undefined) {
             navigate("/login")
         } else {
             if (checker == false) {
-                axios.get(api + "/api/doc/" + id, {
+                axios.get(api + "/api/document/" + id, {
                     headers: {
                         "Authorization": `Token ${localStorage.getItem('token')}`
                     }
                 }).then(res => {
-                    if (res.status == 200) {
+                    if (res.status == 200 || res.status==201) {
                         console.log(res.data["document"]["content"])
                         setContent(res.data["document"]["content"]);
                         let formData = new FormData()
                         formData.append('file', content)
-                        axios.post(api_comp + "/compile/pdf/" + id, formData, {
+                        axios.get(api + "/api/document/compile/" + id, {
                             responseType: "arraybuffer",
                             headers: {
                                 "Content-Type": "multipart/form-data",

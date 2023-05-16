@@ -20,9 +20,9 @@ function Nav() {
     return (
         <>
             <div className="container">
-                <br />
+            <br />
                 <div className="row">
-                    <div className="column"><h4 onClick={() =>  ()=>{navigate("/search") }}>Encry=||=LaTex</h4>  </div>
+                    <div className="column"><a><h4 onClick={() =>  ()=>{navigate("/search") }}>Encry=||=LaTex</h4>  </a></div>
                         <div className="column">
                             <a  onClick={()=>{navigate("/")}}>Home</a>
                             &nbsp;
@@ -37,16 +37,18 @@ function Nav() {
                                            
 
 
-                    {logged == false ? <><div className="column"><button className="button button-outline float-right" onClick={() => [navigate("/signup")]}>Signup</button>&nbsp;<button className="button button-clear float-right" onClick={() => { navigate("/login"); } }>Login </button></div></> : <div className="column"><button className="button button-outline float-right" onClick={logout}>logout</button></div>
+                    {logged == false ? <><div className="column"><button className="button float-right" onClick={() => [navigate("/signup")]}>Signup</button>&nbsp;<button className="button button-clear float-right" onClick={() => { navigate("/login"); } }>Login </button></div></> : <div className="column"><button className="button button-outline float-right" onClick={logout}>logout</button></div>
 
                     }    </div>
             </div>
+            <br/>
             <Outlet />
             <div className="container">
                 <blockquote>
                     <p><em>@CopyRights Louai Zaiter 2023</em></p>
                 </blockquote>
             </div>
+        
         </>
     )
 }

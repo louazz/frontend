@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import image from "../assets/first-post.png";
+import image from "../assets/first-post.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from 'react-toastify';
@@ -17,15 +17,16 @@ function Search() {
             navigate("/login")
         } else {
             if (checker == false) {
-                axios.get(api + "/api/docs", {
+                axios.get(api + "/api/document/user/"+localStorage.getItem("userId"), {
                     headers: {
                         'Authorization': `Token ${localStorage.getItem("token")}`
                     }
                 }).then(
                     response => {
-                        if (response.status == 200) {
-                            setRes(response.data)
-                            setData(response.data)
+                        if (response.status == 200 || response.status == 201) {
+                            console.log(response.data.documents)
+                            setRes(response.data.documents)
+                            setData(response.data.documents)
                             setChecker(true)
                         } else {
                             localStorage.clear()
@@ -39,15 +40,15 @@ function Search() {
 
     //handle delete
     const handleDelete = (id) => {
-        axios.delete(api + "/api/doc/" + id, {
+        axios.delete(api + "/api/document/" + id, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("token")}`
             }
         }).then(
             res => {
-                if (res.status == 200) {
+                if (res.status == 200 || res.status==201) {
                     // alert("document deleted")
-                    axios.get("http://localhost:500/delete/files/" + id)
+                    //axios.get("http://localhost:500/delete/files/" + id)
                     setChecker(false)
                 } else if (res.status == 400) { localStorage.clear() }
                 else {
@@ -77,7 +78,8 @@ function Search() {
     const handleNew = () => {
         var title = window.prompt("insert a title");
         if (title != "") {
-            axios.post(api + '/api/doc', {
+            axios.post(api + '/api/document', {
+                user_id: localStorage.getItem("userId"),
                 title: title,
                 content: `\n\\documentclass[11pt]{article}
                 \n\\usepackage{lipsum} 
@@ -95,7 +97,7 @@ function Search() {
                 headers: {
                     "Authorization": `Token ${localStorage.getItem("token")}`
                 }
-            }).then(res => { if (res.status == 200) { navigate("/document/" + res.data['doc']['ID']) } else { alert("an error has occured") } })
+            }).then(res => { if (res.status == 200 || res.status==201) { navigate("/document/" + res.data['id']) } else { alert("an error has occured") } })
         }
     }
 
@@ -104,8 +106,8 @@ function Search() {
             <blockquote>
                 <p><em>edit, view and create LaTex documents online </em></p>
             </blockquote>
-            <div className="c">
-                <img src={image} />
+            <div className="c1">
+                <img class="img" src={image} />
                 <div className="top-left">
                     <h1 >Search for a document</h1>
 
@@ -146,19 +148,19 @@ function Search() {
                         {res.map(item => (
                             <tr>
                                 <td>
-                                    {item.ID}
+                                    {item._id}
                                 </td>
                                 <td>
                                     {item.title}
                                 </td>
                                 <td>
-                                    <a onClick={() => handleView(item.ID)}>Click</a>
+                                    <a onClick={() => handleView(item._id)}>Click</a>
                                 </td>
                                 <td>
-                                    <a onClick={() => handleEdit(item.ID)}>Click</a>
+                                    <a onClick={() => handleEdit(item._id)}>Click</a>
                                 </td>
                                 <td>
-                                    <a onClick={() => handleDelete(item.ID)}>Click</a>
+                                    <a onClick={() => handleDelete(item._id)}>Click</a>
                                 </td>
                             </tr>
                         ))}
