@@ -144,7 +144,8 @@ function Document() {
             <div className="row test" >
                 <div className="column">
                     <div className="container ">
-                        <div className="row" fourth-color>
+                        <div className="row fourth-color" >
+                            <br/>
                             <div className="column">
                                 <button className="button float-left" onClick={Compile}>Run</button>
 
@@ -159,7 +160,7 @@ function Document() {
                                 <button className="button button-outline float-right " onClick={Docx}>docx</button>
                             </div>
                         </div>
-   <br/>
+                        <br />
                         <AceEditor
                             mode="latex"
                             theme="solarized_light"
