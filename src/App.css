@@ -1,6 +1,7 @@
 body {
   font-family: 'Roboto Mono', monospace;
-
+  background-color: #dfdcf2;
+  color:#21324a
 }
 .AceEditor{ 
   position: absolute;
@@ -33,7 +34,7 @@ input[type=file].hidden {
 .c{
   position: relative;
   text-align: center;
-  color: #24527a; 
+  color: #55628a;
 }
 
 .top-left {
@@ -52,7 +53,11 @@ hr.new {
   object-fit: cover;
   opacity: 0.5;
 }
-
+.color1 {color: #cac4a3;}
+.color2 {color: #ded2bd;}
+.color3 {color: #21324a;}
+.color4 {color: #55628a;}
+.color5 {color: #dfdcf2;}
 .first-color { 
 	background: #5dacbd; 
 }
@@ -66,17 +71,37 @@ hr.new {
 }
 
 .fourth-color { 
-	background: #e0ebeb; 
+	background: #ded2bd;
 }
 a{
-  color:#24527a
+  color:#55628a;
 }
 .button {
-  background-color: #24527a;
-  border-color:  #24527a;
+  background-color: #55628a;;
+  border-color:  #55628a;;
 }
 .button.button-clear,
 .button.button-outline {
   background-color: transparent;
-  color:  #24527a;
+  color:  #55628a;
+}
+input:invalid {
+  background-color: #55628a;
+}
+
+input:valid {
+  background-color: #dfdcf2;
+}
+textarea:valid{
+  background-color: #dfdcf2;
+}
+table,
+td {
+    border: 1px solid #21324a;
+}
+
+thead,
+tfoot {
+    background-color: #21324a;
+    color: #dfdcf2;
 }

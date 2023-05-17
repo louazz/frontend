@@ -32,7 +32,7 @@ function Document() {
                         "Authorization": `Token ${localStorage.getItem('token')}`
                     }
                 }).then(res => {
-                    if (res.status == 200 || res.status==201) {
+                    if (res.status == 200 || res.status == 201) {
                         console.log(res.data["document"]["content"])
                         setContent(res.data["document"]["content"]); setTitle(res.data["document"]["title"]);
 
@@ -96,8 +96,8 @@ function Document() {
                 "Authorization": `Token ${localStorage.getItem("token")}`
             }
         }
-        ).then(res => { if (res.status == 200 || res.status==201) { console.log(res.status) } else { toast("LaTex code compiled but not saved") } })
-   
+        ).then(res => { if (res.status == 200 || res.status == 201) { console.log(res.status) } else { toast("LaTex code compiled but not saved") } })
+
         axios.get(api + "/api/document/compile/" + id, {
             responseType: "arraybuffer",
             headers: {
@@ -108,8 +108,8 @@ function Document() {
             var fileUrl = URL.createObjectURL(file);
             setFileUrl(fileUrl)
             setSeed(Math.random())
-            if (res.status == 200 || res.status==201) {
-                 } else {
+            if (res.status == 200 || res.status == 201) {
+            } else {
                 toast("internal server error")
             }
         })
@@ -140,13 +140,11 @@ function Document() {
 
     return (
         <>
-           <br/>
-           <br />
 
             <div className="row test" >
                 <div className="column">
-                    <div className="container">
-                        <div className="row">
+                    <div className="container ">
+                        <div className="row" fourth-color>
                             <div className="column">
                                 <button className="button float-left" onClick={Compile}>Run</button>
 
@@ -161,7 +159,7 @@ function Document() {
                                 <button className="button button-outline float-right " onClick={Docx}>docx</button>
                             </div>
                         </div>
-
+   <br/>
                         <AceEditor
                             mode="latex"
                             theme="solarized_light"

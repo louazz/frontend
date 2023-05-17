@@ -45,6 +45,7 @@ function Login() {
         setPassword(e.target.value)
     }
     return (
+        <>
         <div className="container">
             <blockquote>
                 <p><em>This application enables the user to edit and generate LaTex documents online</em></p>
@@ -54,16 +55,18 @@ function Login() {
                 <h1 className="top-left">Login</h1>
 
             </div>
+            </div>
             <br />
+            <div className="container fourth-color">
             <h2>Login</h2>
 
             <label>Username</label>
             <input placeholder="Username" onChange={handleUsername} />
             <label>Password</label>
             <input placeholder="Password" type="password" onChange={handlePassword} />
-            <center>
+            
                 <button className="button" onClick={submit}>Submit</button>
-            </center>
+            
             <ToastContainer
                 position="top-center"
                 autoClose={5000}
@@ -78,6 +81,7 @@ function Login() {
             />
 
         </div>
+        </>
     )
 }
 export default Login;

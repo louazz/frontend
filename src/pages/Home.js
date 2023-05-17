@@ -30,69 +30,69 @@ function Home() {
         axios.post(api + "/api/feedback", {
             email: email,
             feedback: feedback
-        }).then(res => { if (res.status == 200 || res.status==201) { toast("message sent") } else { toast("internal server error") } })
+        }).then(res => { if (res.status == 200 || res.status == 201) { toast("message sent") } else { toast("internal server error") } })
     }
     return (
         <>
-        <div className="container fourth">
-        <div className="c1">
-            <img className="img" src={image} />
-            <div className="top-left">
-                <h2>Welcome to EncryLatex</h2>
-                <h4>You can now start viewing, editing and compiling laTeX document </h4>
-              <center><button class="button" onClick={()=>{navigate("/signup")}}>Sign in</button></center>
-            </div>
-            </div>
+            <div className="container fourth">
+                <div className="c1">
+                    <img className="img" src={image} />
+                    <div className="top-left">
+                        <h2>Welcome to EncryLatex</h2>
+                        <h4>You can now start viewing, editing and compiling laTeX document </h4>
+                        <center><button class="button" onClick={() => { navigate("/signup") }}>Sign in</button></center>
+                    </div>
+                </div>
             </div>
             <br />
             <div className="container fourth-color">
-            <blockquote>
-                <p><em>The application allows the users to create Latex documents and compile them online. you may start by creating a new latex document from scratch or use a template provided by our platform. Remember that you can always export your work to DOCX format while clicking on the DOCX button</em></p>
-            </blockquote>
-            <br />
-            <div className='row'>
-                <div className='column'>
-                    <h4>Register</h4>
-                    <p>create an account and <a onClick={() => { navigate("/login") }}>login</a> ; you should enter a vaid username and password. You will recieve a confirmation email once the registration is succeeded. if you've forgot your password you can always click on the forgot credential that will allow you to generate new password</p>
+                <blockquote>
+                    <p><em>The application allows the users to create Latex documents and compile them online. you may start by creating a new latex document from scratch or use a template provided by our platform. Remember that you can always export your work to DOCX format while clicking on the DOCX button</em></p>
+                </blockquote>
+                <br />
+                <div className='row'>
+                    <div className='column'>
+                        <h4>Register</h4>
+                        <p>create an account and <a onClick={() => { navigate("/login") }}>login</a> ; you should enter a vaid username and password. You will recieve a confirmation email once the registration is succeeded. if you've forgot your password you can always click on the forgot credential that will allow you to generate new password</p>
+                    </div>
+                    <div className='column'>
+                        <h4>View & Edit</h4>
+                        <p>Navigate to search and create a Latex document while specifying the title and the template. if you want to view an existing document click on the view button that corresponds to the relevant title. If feel that you need to review the LaTex syntax, you can click on documentation link on the navigation bar.</p>
+                    </div>
                 </div>
-                <div className='column'>
-                    <h4>View & Edit</h4>
-                    <p>Navigate to search and create a Latex document while specifying the title and the template. if you want to view an existing document click on the view button that corresponds to the relevant title. If feel that you need to review the LaTex syntax, you can click on documentation link on the navigation bar.</p>
+                <div className='row'>
+                    <div className='column'>
+                        <h4>Compile, Run, & Export</h4>
+                        <p>Once the document to edit is chosen you can click on the RUN button to compile and SAVE your LaTex code. To upload a configuration file or an image, click on the upload button and choose the target entity. To export a document to Microsoft Word readable format click on DOCX button</p>
+                    </div>
+                    <div className='column'>
+                        <h4>Our Mission</h4>
+                        <p>Our mission is to give users the best experience while writing their documents. EncryLatex will allow the user to enjoy writing any type of document using the famous LaTex language</p>
+                    </div>
                 </div>
-            </div>
-            <div className='row'>
-                <div className='column'>
-                    <h4>Compile, Run, & Export</h4>
-                    <p>Once the document to edit is chosen you can click on the RUN button to compile and SAVE your LaTex code. To upload a configuration file or an image, click on the upload button and choose the target entity. To export a document to Microsoft Word readable format click on DOCX button</p>
+                <div className='row'>
+                    <div className='column'>
+                        <label for='email'>Email</label>
+                        <input id="email" type="email" placeholder='your Email' onChange={handleEmail} />
+                        <br />
+                        <label for="commentField">Feedback</label>
+                        <textarea placeholder="Feedback" id="commentField" onChange={handleFeedback}></textarea>
+                        <button class="button" onClick={submit}> submit</button>
+                    </div>
                 </div>
-                <div className='column'>
-                    <h4>Our Mission</h4>
-                    <p>Our mission is to give users the best experience while writing their documents. EncryLatex will allow the user to enjoy writing any type of document using the famous LaTex language</p>
-                </div>
-            </div>
-            <div className='row'>
-                <div className='column'>
-                    <label for='email'>Email</label>
-                    <input id="email" type="email" placeholder='your Email' onChange={handleEmail} />
-                    <br />
-                    <label for="commentField">Feedback</label>
-                    <textarea placeholder="Feedback" id="commentField" onChange={handleFeedback}></textarea>
-                    <button class="button" onClick={submit}> submit</button>
-                </div>
-            </div>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-            />
-        </div></>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="colored"
+                />
+            </div></>
     )
 }
 export default Home;

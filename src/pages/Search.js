@@ -101,7 +101,7 @@ function Search() {
         }
     }
 
-    return (
+    return (<>
         <div className="container">
             <blockquote>
                 <p><em>edit, view and create LaTex documents online </em></p>
@@ -116,7 +116,9 @@ function Search() {
                 </div>
             </div>
             <br />
-
+            </div>
+            <br />
+            <div className="container fourth-color">
             <h2>documents</h2>
             <center>
                 <div className="row"><div className="column column-60">
@@ -181,7 +183,7 @@ function Search() {
                 pauseOnHover
                 theme="colored"
             />
-        </div>
+        </div></>
     )
 }
 export default Search;

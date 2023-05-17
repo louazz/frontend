@@ -43,6 +43,7 @@ function Signup() {
     setUsername(e.target.value)
   }
   return (
+    <>
     <div className="container">
       <blockquote>
         <p><em>This application enables the user to edit and generate LaTex documents online</em> sign up now and enjoy the features</p>
@@ -54,7 +55,9 @@ function Signup() {
 
       </div>
       <br />
-      <br />
+      </div>
+            <br />
+            <div className="container fourth-color">
       <h2>Sign Up</h2>
 
 
@@ -76,7 +79,7 @@ function Signup() {
         theme="colored"
       />
 
-    </div>
+    </div></>
   )
 }
 export default Signup;
