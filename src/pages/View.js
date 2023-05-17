@@ -10,7 +10,7 @@ function View() {
     const [checker, setChecker] = useState(false)
     const [seed, setSeed] = useState(1)
     const [fileUrl, setFileUrl] = useState(null)
-    const api = "https://backend.encrylatex.live"
+    const api = "https://back.encrylatex.live"
     let navigate = useNavigate()
     useEffect(() => {
         if (localStorage.getItem("token") == undefined) {

@@ -8,7 +8,7 @@ function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
-    const api = "https://backend.encrylatex.live"
+    const api = "https://back.encrylatex.live"
     const submit = () => {
         axios.post(api + "/api/signin", {
             username: username,

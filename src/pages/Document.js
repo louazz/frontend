@@ -20,7 +20,7 @@ function Document() {
     const [seed, setSeed] = useState(1)
     const [title, setTitle] = useState("")
     const navigate = useNavigate()
-    let api = "https://backend.encrylatex.live"
+    let api = "https://back.encrylatex.live"
     let { id } = useParams();
     useEffect(() => {
         if (localStorage.getItem("token") == undefined) {
