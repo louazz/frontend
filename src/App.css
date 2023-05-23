@@ -105,3 +105,19 @@ tfoot {
     background-color: #21324a;
     color: #dfdcf2;
 }
+.box {
+  display: flex;
+}
+
+.one {
+  flex: 1 1 auto;
+}
+
+.two {
+  flex: 1 1 auto;
+}
+
+
+.three {
+  flex: 1 1 auto;
+}

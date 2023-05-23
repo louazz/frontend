@@ -144,20 +144,22 @@ function Document() {
             <div className="row test" >
                 <div className="column">
                     <div className="container ">
-                        <div className="row fourth-color" >
+                        <div className="box fourth-color" >
                             <br/>
                             <br/>
-                            <div className="column">
+                            <div className="one">
                                 <button className="button float-left" onClick={Compile}>Run</button>
-
+                                </div>
+                                <div className="one">
                                 <button className="button button-outline" onClick={download}>PDF</button>
-
-                            </div>
-                            <div className="column"><input placeholder="Title of the document" onChange={handleTitle} value={title} /></div>
-                            <div className="column">
+                                </div>
+                            
+                            <div className="one"><input placeholder="Title of the document" onChange={handleTitle} value={title} /></div>
+                            <div className="one">
                                 <label for="files" class="button button-clear float-right file-label">Upload</label>
                                 <input className="hidden" id="files" type="file" onChange={handleUpload} />
-
+                                </div>
+                                <div className="one">
                                 <button className="button button-outline float-right " onClick={Docx}>docx</button>
                             </div>
                         </div>
