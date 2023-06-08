@@ -1,40 +1,33 @@
-body {
-  font-family: 'Roboto Mono', monospace;
-  background-color: #dfdcf2;
-  color:#21324a
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+.first-color { 
+	background: #e7eaf6; 
 }
-.AceEditor{ 
-  position: absolute;
-  top: 0;
-  right: 40%;
-  bottom: 20%;
-  left: 0;
+	
+.second-color { 
+	background: #d5d7e3; 
 }
-.button-black {
-  background-color: #24527a;
-  border-color:  #24527a;
+
+.third-color { 
+	background: #38598b; 
 }
-.button-black.button-clear,
-.button-black.button-outline {
-  background-color: transparent;
-  color:  #24527a;
+
+.fourth-color { 
+  background-color: #e2b9ae;
 }
-.button-black.button-clear {
-  border-color: transparent;
+body{
+  font-family: 'Pangolin', cursive;
+  background-color: #eaeacb;
+  color: #332824 ;
 }
-.file-label {
-  width: 15rem;
-}
-input[type=file].hidden {
-  visibility: hidden;
-  width: 15rem;
-  margin-left: -15rem;
+
+a{
+  color:#332824
 }
 
 .c{
   position: relative;
   text-align: center;
-  color: #55628a;
+  color:  #332824
 }
 
 .top-left {
@@ -43,67 +36,56 @@ input[type=file].hidden {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-hr.new {
-  border-top: 1px dashed rgb(102, 71, 75);
+
+.button {
+  background-color: #332824;
+  border-color:  #332824;
+}
+.button.button-clear,
+.button.button-outline {
+  background-color: transparent;
+  color:  #332824;
+}
+input:invalid {
+  background-color: #eaeacb;
 }
 
+input:valid {
+  background-color: #eaeacb;
+}
+textarea:valid{
+  background-color: #eaeacb;
+}
+textarea:disabled{
+  background-color: #eaeacb;
+}
 .img{
   height: 400px;
   width: 100%;
   object-fit: cover;
   opacity: 0.5;
 }
-.color1 {color: #cac4a3;}
-.color2 {color: #ded2bd;}
-.color3 {color: #21324a;}
-.color4 {color: #55628a;}
-.color5 {color: #dfdcf2;}
-.first-color { 
-	background: #5dacbd; 
-}
-	
-.second-color { 
-	background: #24527a; 
-}
+.color1 { background-color: #332824;}
+.color2 { background-color: #65533a;}
+.color4 { background-color: #c077c8;}
+.color3 { background-color: #e2b9ae;}
+.color5 { background-color: #eaeacb;}
 
-.third-color { 
-	background: #a7bcb9; 
-}
 
-.fourth-color { 
-	background: #ded2bd;
+.img2{
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.4;
 }
-a{
-  color:#55628a;
+.textarea {
+  height: 200px;
 }
-.button {
-  background-color: #55628a;;
-  border-color:  #55628a;;
+.textarea2 {
+  height: 500px;
 }
-.button.button-clear,
-.button.button-outline {
-  background-color: transparent;
-  color:  #55628a;
-}
-input:invalid {
-  background-color: #55628a;
-}
-
-input:valid {
-  background-color: #dfdcf2;
-}
-textarea:valid{
-  background-color: #dfdcf2;
-}
-table,
-td {
-    border: 1px solid #21324a;
-}
-
-thead,
-tfoot {
-    background-color: #21324a;
-    color: #dfdcf2;
+.textarea3 {
+  height: 470px;
 }
 .box {
   display: flex;
